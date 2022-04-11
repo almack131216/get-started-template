@@ -1,46 +1,65 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import AccordionItem from "./AccordionItem"
 
-const Accordion = ({ header, items }) => {
-  const [allExpanded, setAllExpanded] = useState('')
+const Accordion = ({ header, items, limit }) => {
+  const [allExpanded, setAllExpanded] = useState(false)
+  const [rows, setRows] = useState([])
 
-  const handleOpenAll = () => {
-    console.log('OPEN ALL');
-    setAllExpanded('open')
+  useEffect(() => {
+    if (items) {
+      setRows([...items])
+    }
+    if (limit) {
+      console.log("[Accordion] useEffect() | limit ", limit)
+      const newRows = [...rows].slice(0, limit)
+      setRows(newRows)
+    }
+  }, [items, limit])
+
+  // open/close ALL
+  const toggleOpenCloseAll = (getState) => {
+    console.log("[Accordion] toggleOpenCloseAll()", getState)
+    setAllExpanded(getState)
   }
 
-  const handleCloseAll = () => {
-    console.log('CLOSE ALL');
-    setAllExpanded('close')
+  //
+  const handleToggleParent = () => {
+    console.log("[Accordion] handleToggleParent(), null")
+    setAllExpanded(null)
   }
 
   return (
     <>
-      {header ? <h1>{header}</h1> : ""}
+      {header ? <h1>{header}</h1> : null}
+      <p>
+        status: {allExpanded === true && "open"}
+        {allExpanded === false && "close"}
+        {allExpanded === null && "---"}
+      </p>
+      <button onClick={() => toggleOpenCloseAll(true)}>open all</button>
+      <button onClick={() => toggleOpenCloseAll(false)}>close all</button>
 
-      <p>status: {allExpanded}</p>
-      <button onClick={() => handleOpenAll()}>open all</button>
-      <button onClick={() => handleCloseAll()}>close all</button>
-      
       <div className='accordion-container'>
-        {items.slice(0,5).map((item) => (
-          <AccordionItem
-            key={item.id}
-            title={item.name}
-            image_url={item.image_url}
-            isExpanded={allExpanded}
-          >
-            {item.tagline && (
-              <blockquote className='blockquote'>
-                <h3>{item.tagline}</h3>
-              </blockquote>
-            )}
-            {item.first_brewed && <h5>First Brewed: {item.first_brewed}</h5>}
-            {item.description && (
-              <div className='description'>{item.description}</div>
-            )}
-          </AccordionItem>
-        ))}
+        {rows &&
+          rows.map((item) => (
+            <AccordionItem
+              key={item.id}
+              title={item.name}
+              image_url={item.image_url}
+              isExpanded={allExpanded}
+              toggleParent={handleToggleParent}
+            >
+              {item.tagline && (
+                <blockquote className='blockquote'>
+                  <h3>{item.tagline}</h3>
+                </blockquote>
+              )}
+              {item.first_brewed && <h5>First Brewed: {item.first_brewed}</h5>}
+              {item.description && (
+                <div className='description'>{item.description}</div>
+              )}
+            </AccordionItem>
+          ))}
       </div>
     </>
   )

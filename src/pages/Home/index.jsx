@@ -23,7 +23,7 @@ const HomePage = () => {
       
         {state.results[0] && (
           <>
-            <Accordion header={"Accordion"} items={state.results} />
+            <Accordion header={"Accordion"} items={state.results} limit={5}/>
             <Grid header={"Grid"} items={state.results} />
           </>
         )}

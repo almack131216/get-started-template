@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from "react"
 import { FaPlus, FaMinus } from "react-icons/fa"
 
-const AccordionItem = ({ title, image_url, children, isExpanded }) => {
+const AccordionItem = ({
+  title,
+  image_url,
+  children,
+  isExpanded,
+  toggleParent,
+}) => {
   const [expanded, setExpanded] = useState(false)
 
+  // IF parent open/close ALL changes...
   useEffect(() => {
-    //2do (buggy when one is open and want to close all)
-    console.log("allExpanded: ", isExpanded)
-    isExpanded === "open" && setExpanded(true)
-    isExpanded === "close" && setExpanded(false)
+    console.log("[AccordionItem] useEffect() | isExpanded: ", isExpanded)
+    isExpanded && setExpanded(true)
+    isExpanded === false && setExpanded(false)
   }, [isExpanded])
 
+  // toggle THIS accordion item
   const toggleExpanded = () => {
+    console.log("[AccordionItem] toggleExpanded()... toggleParent()")
     setExpanded(!expanded)
+    toggleParent()
   }
 
   return (

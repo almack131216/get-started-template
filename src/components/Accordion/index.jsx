@@ -2,18 +2,28 @@ import { useState } from "react"
 import AccordionItem from "./AccordionItem"
 
 const Accordion = ({ header, items }) => {
-  const [allExpanded, setAllExpanded] = useState(false)
+  const [allExpanded, setAllExpanded] = useState('')
+
+  const handleOpenAll = () => {
+    console.log('OPEN ALL');
+    setAllExpanded('open')
+  }
+
+  const handleCloseAll = () => {
+    console.log('CLOSE ALL');
+    setAllExpanded('close')
+  }
 
   return (
     <>
       {header ? <h1>{header}</h1> : ""}
 
-      {/* <p>status: {allExpanded ? "yes" : "no"}</p> */}
-      <button onClick={() => setAllExpanded(true)}>open all</button>
-      <button onClick={() => setAllExpanded(false)}>close all</button>
+      <p>status: {allExpanded}</p>
+      <button onClick={() => handleOpenAll()}>open all</button>
+      <button onClick={() => handleCloseAll()}>close all</button>
       
       <div className='accordion-container'>
-        {items.map((item) => (
+        {items.slice(0,5).map((item) => (
           <AccordionItem
             key={item.id}
             title={item.name}

@@ -2,7 +2,7 @@
 import NoImage from "../../assets/images/placeholder-image.png"
 
 const Card = ({ item }) => {
-  const { name, image_url, tagline } = item
+  const { name, image_url } = item
 
   return (
     <div className='card'>
@@ -11,7 +11,6 @@ const Card = ({ item }) => {
       </div>
       <div className='text-container'>
         <strong>{name}</strong>
-        {/* <p>{tagline}</p> */}
       </div>
       <div className='button-container'>
         <button className='btn cta'>More</button>

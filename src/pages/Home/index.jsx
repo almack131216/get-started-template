@@ -30,7 +30,7 @@ const HomePage = () => {
 
         {loading && <Loading />}
        
-        {state.page < state.total_pages && !loading && (
+        {state.page < 10 && !loading && (
           <button onClick={() => setIsLoadingMore(true)}>Load more</button>
         )}
       </div>

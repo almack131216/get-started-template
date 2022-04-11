@@ -29,7 +29,8 @@ export const useHomeFetch = () => {
       //2do (problem with setting state to sessionStorage...)
       setState((prev) => ({
         page: page,
-        results: [...items],
+        results: 
+        page > 1 ? [...prev.results, ...items] : [...items],
       }))
     } catch (error) {
       setError(true)

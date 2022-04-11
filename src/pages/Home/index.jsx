@@ -1,15 +1,15 @@
 import { useEffect } from "react"
 // Components
-import Grid from "../../components/Grid"
+// import Grid from "../../components/Grid"
 import Loading from "../../components/Loading"
 import Accordion from "../../components/Accordion"
 // Hook
 import { useHomeFetch } from "../../hooks/useHomeFetch"
 // Image
-import NoImage from "../../assets/images/placeholder-image.png"
+// import NoImage from "../../assets/images/placeholder-image.png"
 
 const HomePage = () => {
-  const { state, loading, error, setIsLoadingMore } = useHomeFetch()
+  const { state, loading, error } = useHomeFetch()
 
   console.log("STATE: ", state)
 

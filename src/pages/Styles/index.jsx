@@ -24,7 +24,7 @@ const Styles = () => {
         vestibulum hendrerit. Nunc eget gravida massa.
       </p>
       <p>
-        Paragraph 2: Maecenas mattis eros sapien, <a href='#'>vel porttitor</a>{" "}
+        Paragraph 2: Maecenas mattis eros sapien, <a href='/'>vel porttitor</a>{" "}
         diam venenatis ac. Suspendisse aliquam enim ut nulla pellentesque
         faucibus id eget lectus. Phasellus nulla mi, maximus ac tortor ornare,
         ultrices tristique tortor. Donec blandit nisi ut blandit egestas. Nunc

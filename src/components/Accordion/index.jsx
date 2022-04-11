@@ -11,7 +11,7 @@ const Accordion = ({ header, items, limit }) => {
     }
     if (limit) {
       console.log("[Accordion] useEffect() | limit ", limit)
-      const newRows = [...rows].slice(0, limit)
+      const newRows = [...items].slice(0, limit)
       setRows(newRows)
     }
   }, [items, limit])
@@ -22,7 +22,7 @@ const Accordion = ({ header, items, limit }) => {
     setAllExpanded(getState)
   }
 
-  //
+  // triggered from child 
   const handleToggleParent = () => {
     console.log("[Accordion] handleToggleParent(), null")
     setAllExpanded(null)

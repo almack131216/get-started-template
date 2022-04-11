@@ -12,12 +12,12 @@
     }
 
     /* Screen larger than 900px? 3 columns */
-    @media (min-width: 900px) and (max-width:1191px) {
+    @media (min-width: 992px) and (max-width:1191px) {
         grid-template-columns: repeat(3, 1fr);
     }
 
     /* Screen larger than 600px? 2 columns */
-    @media (min-width: 600px) and (max-width:899px) {
+    @media (min-width: 600px) and (max-width:991px) {
         grid-template-columns: repeat(2, 1fr);
     }    
 

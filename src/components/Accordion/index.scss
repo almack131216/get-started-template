@@ -1,10 +1,4 @@
-// main {
-//     min-height: 100vh;
-//     /* using flex because of better browser support */
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
+// ----- Accordion -----
 
 .accordion-container {
     @include shared-container();
@@ -13,11 +7,4 @@
 .accordion-container h3 {
     line-height: 1.2;
     font-weight: 500;
-}
-
-@media screen and (max-width: 992px) {
-    .accordion-container {
-        //   display: grid;
-        //   grid-template-columns: 50% 1fr;
-    }
 }

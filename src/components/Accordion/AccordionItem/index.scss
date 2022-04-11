@@ -1,12 +1,7 @@
 // ----- Accordion Item -----
 
 .question {
-    padding: 1rem 1.5rem;
-    border: 2px solid var(--color-border);
-    margin-bottom: 1rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--light-shadow);
-    background-color:white;
+    @include shared-block();
 
     header {
         display: flex;
@@ -15,23 +10,23 @@
         cursor: pointer;
 
         .image-container {
-            width:40px;
-            height:50px;
+            width: 40px;
+            height: 50px;
             // border:1px solid var(--color-border);
-            overflow:hidden;
-            text-align:left;
-    
+            overflow: hidden;
+            text-align: left;
+
             img {
-                margin:0 auto;
-                width:auto;
-                height:100%;
+                margin: 0 auto;
+                width: auto;
+                height: 100%;
             }
         }
 
         h4 {
             text-transform: none;
             line-height: 1.5;
-            flex:1;
+            flex: 1;
             margin-bottom: 0;
         }
 
@@ -52,28 +47,29 @@
         }
 
     }
-    
+
     .answer {
-        padding:var(--pad2) 0;
+        padding: var(--pad2) 0;
 
         .blockquote {
-            margin:0;
-            padding:0;
+            margin: 0;
+            padding: 0;
             font-style: italic;
-            font-weight:bold;
-            font-size:3.2rem;
-        
+            font-weight: bold;
+            font-size: 3.2rem;
+
             h3 {
                 color: var(--color-primary);
+
                 &:before {
                     content: "\201C";
                 }
+
                 &:after {
                     content: "\201D";
                 }
             }
         }
     }
-    
-}
 
+}

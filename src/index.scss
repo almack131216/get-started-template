@@ -4,12 +4,14 @@
 /* BASE / ROOT */
 @import "./assets/sass/base";
 @import "./assets/sass/typography";
+@import "./assets/sass/mixins";
 
 /* COMPONENTS */
 @import "./components/Navbar/";
 @import "./components/Accordion/";
 @import "./components/Accordion/AccordionItem/";
 @import "./components/Grid/";
+@import "./components/Card/";
 @import "./components/Loading/";
 @import "./components/SearchBar/";
 

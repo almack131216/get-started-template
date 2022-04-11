@@ -19,8 +19,8 @@
 
     /* rest of the vars */
     --transition: 0.3s ease-in-out all;
-	--pad1: 15px;
-	--pad2: calc(var(--pad1) * 2);
+    --pad1: 15px;
+    --pad2: calc(var(--pad1) * 2);
     --max-width: 1120px;
     --border-radius: 5px;
     --transition: all 0.3s linear;
@@ -37,7 +37,7 @@ body {
 }
 
 .page-container {
-	padding:var(--pad1);
+    padding: var(--pad1);
 }
 
 .color-primary {

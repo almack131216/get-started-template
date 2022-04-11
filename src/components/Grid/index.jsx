@@ -1,8 +1,16 @@
-import React from 'react'
+import { useState } from "react"
+import Card from "../Card"
 
-const Grid = () => {
+const Grid = ({ header, items }) => {
   return (
-    <div>Grid</div>
+    <>
+      {header ? <h1>{header}</h1> : ""}
+      <div className='grid-container'>
+        {items.map((item) => (
+          <Card key={item.id} item={item} />
+        ))}
+      </div>
+    </>
   )
 }
 

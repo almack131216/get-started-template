@@ -1,0 +1,91 @@
+/* _typography.scss */
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap");
+
+html {
+  font-size: 62.5%;/* 1.6rem = 16px */
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: var(--color-text);
+}
+
+// headings
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: var(--letter-spacing);
+}
+
+h1 {
+  font-size: 4.8rem;
+  line-height: 5.2rem;
+}
+
+h2 {
+  font-size: 4.0rem;
+  line-height: 4.8rem;
+}
+
+h3 {
+  font-size: 3.2rem;
+  line-height: 4rem;
+}
+
+h4 {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+}
+
+h5 {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  font-weight: 600;
+  text-transform:uppercase;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-family: var(--font-body);
+}
+
+small,
+.text-small {
+  font-size: var(--text-small);
+}
+
+a {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+  margin: 0 0 var(--pad1) 0;
+  padding: 0;
+
+  li {
+    padding:0;
+
+    &::before {
+      content: "•";
+      padding: 0 var(--pad1);
+    }
+  }
+}

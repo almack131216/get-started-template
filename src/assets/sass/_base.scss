@@ -1,0 +1,58 @@
+/* _base.scss */
+
+:root {
+    /* colors */
+    --color-bg-body: #f1f1f1;
+    --color-navbar: #000520;
+    --color-navbar-text: #fff;
+    --color-primary: #84c389;
+    --color-secondary: #a96fb8;
+    --color-heading: #000;
+    --color-text: #444;
+
+    /* fonts  */
+    --font-header: "Roboto", sans-serif;
+    --font-body: "Poppins", sans-serif;
+    --text-small: 0.7em;
+    --letter-spacing: 1px;
+
+    /* rest of the vars */
+    --transition: 0.3s ease-in-out all;
+	--pad1: 15px;
+	--pad2: calc(var(--pad1) * 2);
+    --max-width: 1120px;
+}
+
+html {}
+
+body {
+    background-color: var(--color-bg-body);
+}
+
+.page-container {
+	padding:var(--pad1);
+}
+
+.color-primary {
+    color: var(--color-primary)
+}
+
+.color-secondary {
+    color: var(--color-secondary)
+}
+
+.bg-color-heading {
+    background-color: var(--color-heading)
+}
+
+.bg-color-text {
+    background-color: var(--color-text)
+}
+
+.bg-color-primary {
+    background-color: var(--color-primary)
+}
+
+.bg-color-secondary {
+    background-color: var(--color-secondary)
+}

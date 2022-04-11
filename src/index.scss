@@ -1,0 +1,19 @@
+/* index.scss */
+@import "./assets/css/normalize.css";
+
+/* BASE / ROOT */
+@import "./assets/sass/base";
+@import "./assets/sass/typography";
+
+/* COMPONENTS */
+@import "./components/Navbar/";
+@import "./components/Accordion/";
+@import "./components/Grid/";
+@import "./components/Loading/";
+@import "./components/SearchBar/";
+
+
+/* PAGES */
+@import "./pages/Home";
+@import "./pages/About";
+@import "./pages/Styles";

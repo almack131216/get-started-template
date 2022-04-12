@@ -80,12 +80,20 @@ ul {
   margin: 0 0 var(--pad1) 0;
   padding: 0;
 
-  li {
+  > li {
     padding:0;
 
     &::before {
       content: "•";
       padding: 0 var(--pad1);
+    }
+
+    > ol {
+      margin:var(--pad1);
+
+      > li {
+        padding:0;
+      }
     }
   }
 }

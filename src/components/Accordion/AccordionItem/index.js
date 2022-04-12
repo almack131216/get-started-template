@@ -12,14 +12,14 @@ const AccordionItem = ({
 
   // IF parent open/close ALL changes...
   useEffect(() => {
-    console.log("[AccordionItem] useEffect() | isExpanded: ", isExpanded)
+    // console.log("[C]---[AccordionItem] useEffect() | isExpanded: ", isExpanded)
     isExpanded && setExpanded(true)
     isExpanded === false && setExpanded(false)
   }, [isExpanded])
 
   // toggle THIS accordion item
   const toggleExpanded = () => {
-    console.log("[AccordionItem] toggleExpanded()... toggleParent()")
+    // console.log("[C]---[AccordionItem] toggleExpanded()... toggleParent()")
     setExpanded(!expanded)
     toggleParent()
   }

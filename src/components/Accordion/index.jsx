@@ -10,7 +10,7 @@ const Accordion = ({ header, items, limit }) => {
       setRows([...items])
     }
     if (limit) {
-      console.log("[Accordion] useEffect() | limit ", limit)
+      // console.log("[C]---[Accordion] useEffect() | limit ", limit)
       const newRows = [...items].slice(0, limit)
       setRows(newRows)
     }
@@ -18,13 +18,13 @@ const Accordion = ({ header, items, limit }) => {
 
   // open/close ALL
   const toggleOpenCloseAll = (getState) => {
-    console.log("[Accordion] toggleOpenCloseAll()", getState)
+    // console.log("[C]---[Accordion] toggleOpenCloseAll()", getState)
     setAllExpanded(getState)
   }
 
   // triggered from child 
   const handleToggleParent = () => {
-    console.log("[Accordion] handleToggleParent(), null")
+    // console.log("[C]---[Accordion] handleToggleParent(), null")
     setAllExpanded(null)
   }
 

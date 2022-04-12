@@ -7,9 +7,12 @@ import Accordion from "../../components/Accordion"
 import { useHomeFetch } from "../../hooks/useHomeFetch"
 
 const HomePage = () => {
-  const { state, loading, error, setIsLoadingMore } = useHomeFetch()
-
-  console.log("STATE: ", state)
+  const {
+    state,
+    loading,
+    error,
+    setIsLoadingMore
+  } = useHomeFetch();
 
   useEffect(() => {
     document.title = "Home"

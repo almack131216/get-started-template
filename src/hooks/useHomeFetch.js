@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 // API
 import API from "../API"
 // Helpers
@@ -10,13 +10,17 @@ const initialState = {
 }
 
 export const useHomeFetch = () => {
+  const isMounted = useRef(true)
+  const sessionState = isPersistedState("pageHomeState")
+  const initialStateStored =
+    sessionState && sessionState.results.length ? sessionState : initialState
+
+  const showCLG = false
   const [searchTerm, setSearchTerm] = useState("")
-  const [state, setState] = useState(initialState)
+  const [state, setState] = useState(initialStateStored)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
-
-  // console.log(searchTerm);
 
   const fetchItems = async (page, searchTerm = "") => {
     try {
@@ -24,13 +28,19 @@ export const useHomeFetch = () => {
       setLoading(true)
 
       const items = await API.fetchItems(searchTerm, page)
-      console.log(items)
+      showCLG &&
+        console.log("[H]---fetchItems() page: ", page, ", items: ", items)
 
-      //2do (problem with setting state to sessionStorage...)
-      setState((prev) => ({
+      const newArr = {
         page: page,
-        results: 
-        page > 1 ? [...prev.results, ...items] : [...items],
+        results: [...items],
+      }
+
+      setState((prev) => ({
+        ...newArr,
+        page,
+        results:
+          page > 1 ? [...prev.results, ...newArr.results] : [...newArr.results],
       }))
     } catch (error) {
       setError(true)
@@ -41,32 +51,44 @@ export const useHomeFetch = () => {
   // Initial and search
   useEffect(() => {
     if (!searchTerm) {
-      const sessionState = isPersistedState("homeState")
-
-      if (sessionState) {
-        console.log("Grabbing from sessionStorage")
-        console.log(sessionState)
-        // setState(sessionState);//2do
-        // return;
+      // const sessionState = isPersistedState("pageHomeState") // move to top to avoid reload initialState bug
+      showCLG && console.log("[H]---useEffect()---TRYING...", sessionState)
+      if (sessionState && sessionState.results.length) {
+        showCLG &&
+          console.log(
+            "[H]---useEffect()---Grabbing from sessionStorage...",
+            sessionState.results
+          )
+        setState(sessionState)
+        return
       }
     }
 
-    console.log("Grabbing from API")
-    setState(initialState)
-    fetchItems(1, searchTerm)
-  }, [searchTerm])
+    if (isMounted) {
+      showCLG && console.log("[H]---useEffect()---Grabbing from API")
+      setState(initialState)
+      fetchItems(1, searchTerm)
+    }
+
+    return () => {
+      isMounted.current = false
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm, showCLG])
 
   // Load More
   useEffect(() => {
     if (!isLoadingMore) return
-
+    showCLG && console.log("[H]---useEffect()---Load More...")
     fetchItems(state.page + 1, searchTerm)
     setIsLoadingMore(false)
-  }, [isLoadingMore, searchTerm, state.page])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoadingMore, searchTerm, state.page, showCLG])
 
   // Write to sessionStorage
   useEffect(() => {
-    if (!searchTerm) sessionStorage.setItem("homeState", JSON.stringify(state))
+    if (!searchTerm)
+      sessionStorage.setItem("pageHomeState", JSON.stringify(state))
   }, [searchTerm, state])
 
   return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore }
